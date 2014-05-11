@@ -1,0 +1,14 @@
+all: clean helloalagu hello  multiplication
+multiplication:
+	gcc -o multiplication multiplication.c
+helloalagu:
+	gcc -o helloalagu helloalagu.c
+hello:
+	gcc -o hello hello.c
+
+clean:
+	-rm -r hello helloalagu multiplication
+
+.PHONY: clean
+
+
