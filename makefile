@@ -14,10 +14,13 @@ isPrimeFast:
 	gcc -shared -o sharedlib/libmathplusplus.so.1.2 isPrimeFast.o -lm
 rmldlinks:
 	rm sharedlib/libmathplusplus.so.1
+	rm sharedlib/libmathplusplus.so
 updateIsPrimeWithNaive: rmldlinks
 	ln -s libmathplusplus.so.1.1 sharedlib/libmathplusplus.so.1
+	ln -s libmathplusplus.so.1 sharedlib/libmathplusplus.so
 updateIsPrimeWithFast: rmldlinks
 	ln -s libmathplusplus.so.1.2 sharedlib/libmathplusplus.so.1
+	ln -s libmathplusplus.so.1 sharedlib/libmathplusplus.so
 isPrime:
 	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall isPrime.c -o isPrime -lmathplusplus 
 clean:
