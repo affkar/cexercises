@@ -12,6 +12,7 @@ typedef struct Node{
 void printList(NodeType* startNode);
 NodeType* getNode(int, NodeType*, NodeType*);
 void addNodeAtLast(NodeType* start, int num);
+NodeType* getNext(NodeType*);
 main(int argc, char** argv){
    
     NodeType* head=getNode(2,NULL,NULL);
@@ -53,13 +54,21 @@ void printList(NodeType* startNode){
     printf("current\tprev\tnext\tnumber\n");
     printf("**************************************************\n");
     NodeType* currentNode=startNode;
-    while(currentNode != NULL){
-        printf("%p\t%p\t%p\t%d\n", currentNode, currentNode->prev, currentNode->next, currentNode->number);
-        currentNode=currentNode->next;
-    }
+    if(currentNode != NULL)
+        do{
+            printf("%p\t%p\t%p\t%d\n", currentNode, currentNode->prev, currentNode->next, currentNode->number);
+        } while((currentNode=getNext(currentNode))!=NULL);
     printf("**************************************************\n");
     printf("done printing list at %p!\n", startNode);
     printf("**************************************************\n");
 
 
+}
+
+NodeType* getNext(NodeType* node){
+    NodeType* currentNode=node;
+    if(currentNode != NULL){
+        return currentNode->next;
+    }
+    return NULL;
 }
