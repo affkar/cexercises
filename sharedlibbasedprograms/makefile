@@ -1,4 +1,4 @@
-all: clean isPrimeNaive isPrimeFast isPrime allprimenumbersbelown ds linkedlisttest
+all: clean isPrimeNaive isPrimeFast isPrime printwhetherprimeornot ds linkedlisttest allprimenumbersbelown 
 isPrimeNaive:
 	gcc -c -Wall -Werror -lm -fPIC isPrimeNaive.c
 	gcc -shared -o ../sharedlib/libmathplusplus.so.1.1 isPrimeNaive.o
@@ -16,8 +16,10 @@ updateIsPrimeWithFast: rmldlinks_prime
 	ln -s libmathplusplus.so.1 ../sharedlib/libmathplusplus.so
 isPrime:
 	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall isPrime.c -o isPrime -lmathplusplus 
+printwhetherprimeornot:
+	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall printwhetherprimeornot.c -o printwhetherprimeornot -lmathplusplus 
 allprimenumbersbelown:
-	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall allprimenumbersbelown.c -o allprimenumbersbelown -lmathplusplus 
+	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall allprimenumbersbelown.c -o allprimenumbersbelown -lmathplusplus -lds 
 rmldlinks_ds:
 	-rm ../sharedlib/libds.so.1
 	-rm ../sharedlib/libds.so
@@ -30,6 +32,6 @@ ds:
 linkedlisttest:
 	gcc -L/home/alagu/programming/c/cexercises/sharedlib -Wall linkedlisttest.c -o linkedlisttest -lds 
 clean:
-	-rm -r isPrime isPrimeNaive.o isPrimeFast.o ../sharedlib/libmathplusplus.so.1.1 ../sharedlib/libmathplusplus.so.1.2 allprimenumbersbelown ds.o ../sharedlib/libds.so.1.1 linkedlisttest 
+	-rm -r isPrime isPrimeNaive.o isPrimeFast.o ../sharedlib/libmathplusplus.so.1.1 ../sharedlib/libmathplusplus.so.1.2 ds.o ../sharedlib/libds.so.1.1 linkedlisttest printwhetherprimeornot allprimenumbersbelown
 
 .PHONY: clean updateIsPrimeWithNaive updateIsPrimeWithFast rmldlinks_prime updateDs rmldlinks_ds
